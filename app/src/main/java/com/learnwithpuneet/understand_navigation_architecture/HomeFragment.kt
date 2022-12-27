@@ -18,8 +18,17 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         homeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container,false)
-        homeBinding.btnDetail.setOnClickListener {
+
+        // without args
+        /* homeBinding.btnDetail.setOnClickListener {
             it.findNavController().navigate(R.id.action_homeFragment_to_detailFragment)
+        }
+         */
+
+        // with args
+        homeBinding.btnDetail.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment("Puneet Grover")
+            it.findNavController().navigate(action)
         }
         return homeBinding.root
     }
